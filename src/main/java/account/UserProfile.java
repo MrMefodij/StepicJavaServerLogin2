@@ -1,32 +1,32 @@
 package account;
 
 public class UserProfile {
-    private final UserName userName;
-    private final UserPassword userPassword;
-    private final UserEmail userEmail;
+    private final UserName login;
+    private final UserPassword pass;
+    private final UserEmail email;
 
-    public UserProfile(String _userName, String _userPassword, String _userEmail){
-        this.userName = new UserName(_userName);
-        this.userPassword = new UserPassword(_userPassword);
-        this.userEmail = new UserEmail(_userEmail);
+    public UserProfile(String login, String pass, String email) {
+        this.login = new UserName(login);
+        this.pass = new UserPassword(pass);
+        this.email = new UserEmail(email);
     }
 
-    public UserProfile(String _userName){
-        this.userName = new UserName(_userName);
-        this.userPassword = new UserPassword(_userName);
-        this.userEmail = new UserEmail(_userName + "@mail.ru");
+    public UserProfile(String login) {
+        this.login = new UserName(login);
+        this.pass = new UserPassword(login);
+        this.email = new UserEmail(login);
     }
 
-    public String getLogin() {
-        return this.userName.getUserName();
+    public UserName getLogin() {
+        return login;
     }
 
-    public String getPass() {
-        return this.userPassword.getUserPassword();
+    public UserPassword getPass() {
+        return pass;
     }
 
-    public String getEmail() {
-        return this.userEmail.getUserEmail();
+    public UserEmail getEmail() {
+        return email;
     }
 
 }

@@ -1,7 +1,7 @@
 package account;
 
 public class UserName <T extends String> {
-    private final T userName;
+    private  T userName;
 
     public UserName (T _userName){
         this.userName = _userName;

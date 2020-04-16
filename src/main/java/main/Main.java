@@ -1,25 +1,22 @@
 package main;
 
-import Servlets.SessionsServlet;
-import Servlets.UsersServlet;
 import account.AccountService;
+import account.UserProfile;
 import org.eclipse.jetty.server.Handler;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.handler.HandlerList;
 import org.eclipse.jetty.server.handler.ResourceHandler;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
-
-
-import javax.servlet.ServletContext;
+import Servlets.SessionsServlet;
+import Servlets.UsersServlet;
 
 public class Main {
     public static void main(String[] args) throws Exception {
         AccountService accountService = new AccountService();
-        accountService.addNewUser("admin");
-        accountService.addNewUser("test","test","test@mail.ru");
 
-        System.out.println(accountService.getUserBySessionId("admin"));
+        accountService.addNewUser(new UserProfile("admin"));
+        accountService.addNewUser(new UserProfile("test"));
 
         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
         context.addServlet(new ServletHolder(new UsersServlet(accountService)), "/api/v1/users");
@@ -35,6 +32,7 @@ public class Main {
         server.setHandler(handlers);
 
         server.start();
+        System.out.println("Server started");
         server.join();
     }
 }
