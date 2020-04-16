@@ -15,6 +15,7 @@ public class AccountService {
     public void addNewUser(UserProfile userProfile) {
         loginToProfile.put(userProfile.getLogin().getUserName(), userProfile);
         System.out.println(userProfile.getLogin().getUserName() + " " +userProfile);
+        System.out.println(loginToProfile.size());
     }
 
     public UserProfile getUserByLogin(String login) {
